@@ -7,19 +7,19 @@ services:
      - ./:/var/www/html
    environment:
     DB_HOST: db
-    DB_NAME: csdistsys_db
-    DB_USER: csdistsys_user
-    DB_PASS: Mypro123
+    DB_NAME: ${DB_NAME}
+    DB_USER: ${DB_USER}
+    DB_PASS: ${DB_PASSWORD}
 
    depends_on:
      - db
  db:
    image: mysql:8.0
    environment:
-      MYSQL_ROOT_PASSWORD: rootpass
-      MYSQL_DATABASE: csdistsys_db
-      MYSQL_USER: csdistsys_user
-      MYSQL_PASSWORD: Mypro123
+    MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    MYSQL_DATABASE: ${DB_NAME}
+    MYSQL_USER: ${DB_USER}
+    MYSQL_PASSWORD: ${DB_PASSWORD}  
    volumes:
       - dbdata:/var/lib/mysql
 
