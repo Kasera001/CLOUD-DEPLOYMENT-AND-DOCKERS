@@ -1,0 +1,14 @@
+# Dockerfile defines how to build the web application container. Itselects a PHP 8.2 image with Apache, installs the PDO MySQL extensions, copies theapplication files nto the web server directory, and exposes port 80 for HTTP traffic.
+#php imagee with apache
+FROM php:8.2-apache
+
+# install the pdo extension on php can speak to mysql database container
+RUN docker-php-ext-install pdo pdo_mysql
+
+#copy the local files into the  containers web directory
+COPY . /var/www/html/
+
+ # open the docker port 80
+
+EXPOSE 80
+
