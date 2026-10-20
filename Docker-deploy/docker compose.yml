@@ -1,0 +1,39 @@
+# ymlThis configuration defines and coordinates the web application,
+#MySQL database, and Mailpit email-testing services and service dependecies
+
+services:
+ # web application service
+ web:
+  build: .
+  ports:
+  - "8080:80"
+  volumes:
+  - .:/var/www/html
+  environment:
+  - DB_HOST = db
+  - DB_NAME = ${DB_NAME}
+  - DB_USER = root
+  - DB_PASSWORD = ${DB_PASSWORD}
+  depends_on:
+  - db
+ # database service
+ db:
+  image: mysql:8.0
+  ports:
+  - "3306:3306"
+  environment:
+  - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+  - MYSQL_DATABASE=${DB_NAME}
+  volumes:
+  - db_data:/var/lib/mysql
+  - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+ # the mailpit for the forget password link
+ mail:
+  image: axllent/mailpit
+  ports:
+  - "8025:8025"
+
+volumes:
+ db_data
+
