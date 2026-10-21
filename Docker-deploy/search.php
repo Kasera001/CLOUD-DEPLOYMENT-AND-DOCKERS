@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 }
-function h($v) { return htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8'); }
+function h(mixed $v): string { return htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8'); }
 ?>
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
