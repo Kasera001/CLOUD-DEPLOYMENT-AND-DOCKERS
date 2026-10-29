@@ -11,9 +11,9 @@ services:
   - .:/var/www/html
   environment:
   - DB_HOST=db
-  - DB_NAME=${DB_NAME}
-  - DB_USER=root
-  - DB_PASSWORD=${DB_PASSWORD}
+  - DB_NAME=${DB_NAME:?DB_NAME must be set}
+  - DB_USER=${DB_USER:?DB_USER must be set}
+  - DB_PASSWORD=${DB_PASSWORD:?DB_PASSWORD must be set}
   depends_on:
   - db
   - mail
@@ -23,11 +23,11 @@ services:
   ports:
   - "3306:3306"
   environment:
-  - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
-  - MYSQL_DATABASE=${DB_NAME}
+  - MYSQL_ROOT_PASSWORD=${DB_PASSWORD:?DB_PASSWORD must be set}
+  - MYSQL_DATABASE=${DB_NAME:?DB_NAME must be set}
   volumes:
   - db_data:/var/lib/mysql
-  - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  - ./Init.sql:/docker-entrypoint-initdb.d/init.sql
 
  # the mailpit for the forget password link
  mail:
@@ -38,4 +38,3 @@ services:
 
 volumes:
  db_data:
-

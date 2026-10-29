@@ -16,7 +16,3 @@ email VARCHAR(100) NOT NULL,
 address TEXT NOT NULL,
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-INSERT INTO users (username, email, password)
-VALUES ('admin', 'admin@kabarak.ac.ke',
-'$2y$10$w6B2z724pZq9.K0XbW8vxe1G7lK3m7RpyBv2H1x3z4y5z6a7b8c9d')
-ON DUPLICATE KEY UPDATE id=id;
