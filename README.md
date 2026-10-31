@@ -80,11 +80,7 @@ DB_PASSWORD=your_password
 - Managing configuration and secrets outside the code
 - Deploying containers to a cloud environment
 
-## 🗺️ Roadmap
-- [ ] Move secrets to environment variables
-- [ ] Add a reverse proxy with HTTPS
-- [ ] Add CI/CD with GitHub Actions
-- [ ] Move to Kubernetes
 
-## 👩‍💻 Author
+
+##  Author
 **Stella Genevive Awuor** · [GitHub](https://github.com/Kasera001)
